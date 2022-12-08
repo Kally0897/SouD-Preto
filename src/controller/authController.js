@@ -11,7 +11,7 @@ const login = (request, response) => {
        UserSchema.findOne({email: request.body.email}, (error, user) => {
         if(user){
             console.log(user)
-        }if(!user){
+        }if(!user || error){
             return response.status(404).send({
                 message: "usuário não encontrado",
                 email: `${request.body.email}`

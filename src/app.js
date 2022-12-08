@@ -12,5 +12,5 @@ db.connect() ;
 app.use(cors());
 app.use(express.json());
 app.use("/users", userRoutes);
-
+// Criar rota geral a partir dos tipos de fio e a partir dele, conectar os salões e lojas
 module.exports = app;

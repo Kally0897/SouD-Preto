@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 
-const SalaoSchema = new mongoose.Schema({
+const LojaSchema = new mongoose.Schema({
     id: mongoose.Schema.Types.ObjectId,
-    name: {
+    nome: {
         type: String,
         required: true
     },
     cnpj:{
         type: String,
         required: true
-
     },
     instagram: {
         type: String,
@@ -19,9 +18,13 @@ const SalaoSchema = new mongoose.Schema({
          type: String,
          required: true
     },
-    especialidades:{
+    bairro:{
+        type: String,
+        required: true 
+    },
+    produto:{
         type: Array,
-        required: true
+        required: true 
     },
     createdAt: {
         type: Date,
@@ -29,4 +32,4 @@ const SalaoSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('salao', SalaoSchema);
+module.exports = mongoose.model('loja', LojaSchema);

@@ -26,5 +26,5 @@ const tratarData = (data)=>{
 }
 
 module.exports = {
-    agendarReserva
+    reserve
 }

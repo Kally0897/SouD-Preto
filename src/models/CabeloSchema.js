@@ -1,11 +1,16 @@
 const mongoose = require('mongoose');
 
 const CabeloSchema = new mongoose.Schema({
+
+    nome:{
+        type: String,
+        required: true
+    },
     tipo: {
         type: String,
         required: true
     },
-    características:{
+    caracteristicas:{
         type: String,
         required: true
     },
@@ -15,4 +20,4 @@ const CabeloSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('cabelo', CabeloSchema);
+module.exports = mongoose.model('Cabelo', CabeloSchema);

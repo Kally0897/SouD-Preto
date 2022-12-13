@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const SalaoSchema = new mongoose.Schema({
     id: mongoose.Schema.Types.ObjectId,
-    name: {
+    nome: {
         type: String,
         required: true
     },
@@ -18,6 +18,10 @@ const SalaoSchema = new mongoose.Schema({
     telefone:{
          type: String,
          required: true
+    },
+    bairro:{
+        type: String,
+        required: true
     },
     especialidades:{
         type: Array,

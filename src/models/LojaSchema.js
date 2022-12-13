@@ -12,17 +12,21 @@ const LojaSchema = new mongoose.Schema({
     },
     instagram: {
         type: String,
-        required: true
+        required: false
     },
+    cabelos:{
+        type: Array,
+        required: true
+    }, 
     telefone:{
          type: String,
-         required: true
+         required: false
     },
     bairro:{
         type: String,
         required: true 
     },
-    produto:{
+    produtos:{
         type: Array,
         required: true 
     },
@@ -32,4 +36,4 @@ const LojaSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('loja', LojaSchema);
+module.exports = mongoose.model('Loja', LojaSchema);

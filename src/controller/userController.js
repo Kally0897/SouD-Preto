@@ -20,7 +20,7 @@ const creatUser = async( request, response) => {
 
    if(emailExists){
     return response.status(409).send({
-      message: "Email já cadastrado, para novo usuárioa, favor cadastrar outro email"
+      message: "Email já cadastrado! Para novo usuário(a), favor cadastrar outro email"
     })
    }
   
@@ -44,10 +44,48 @@ const creatUser = async( request, response) => {
 }
 
 const updateUser = async (request, response) => {
+  const user = await UserSchema.findById(request.params.id)
 
+  if(user == null){
+    return response.satus(404).json({
+      message: "Usuário não encontrado"
+    })
+  }
+
+  if(request.params.id != null){
+
+  }
+
+  try{
+    const adjustUser = await user.save()
+    return response.status(200).send(adjustUser)
+  }catch(error){
+    response.status(500).json({
+      message: error.message
+    })
+  }
 }
 
 const deleteUser = async (request, response) => {
+   const user = await UserSchema.findById(request.params.id)
+
+   if(user == null){
+    return response.status(404).json({
+      message: "Usuário não encontrado"
+    })
+
+  }
+
+  try{
+    await user.remove()
+    response.status(200).json({
+      message: "Usuário deletado com sucesso!"
+    })
+  }catch(error){
+    return response.status(500).json({
+      message: error.message
+    })
+  }
 
 }
 

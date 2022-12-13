@@ -8,9 +8,14 @@
 <h3> Regra de Negócio: </h3>
 
 <p>
+
 - Para cada tipo de fio deve se ter uma rota específica, a medida que produtos, salões e lojas podem ou não serem especializadas no tipo capilar;
 
+- Não pode haver o mesmo tipo de fio cadastrado mais de uma vez;
+
 - Deve haver uma rota que traga todos os tipos de fio capilar e suas características (a fim de que o usuário se identifique e encontre o seu tipo de fio) e que a partir daí o usuário possa encontrar salões/lojas para o seu perfil capilar;
+
+- Deve ser possível atualizar os cuidados necessários para cada fio;
 
 - Não pode haver dois salões e/ou lojas com o mesmo CNPJ;
 

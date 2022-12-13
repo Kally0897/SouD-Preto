@@ -12,7 +12,7 @@ const reserve = async (request, response) => {
         })
 
         response.status(200).json({
-            mensagem:`Reserva confirmada para o dia ${data_reserva}`
+            mensagem:`Reserva confirmada para o dia ${data_reserva}, segue dados: ${reserver}`
         })
 }catch(error){
         response.status(400).json({

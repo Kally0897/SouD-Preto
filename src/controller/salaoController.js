@@ -4,9 +4,21 @@ const Loja = require("../models/LojaSchema")
 
 
 
+
 const showSalao = async (request, response) => {
     const saloes = await Salao.find()
     return response.status(200).json(saloes)
+}
+
+const showSalaoId = async (request, response) => {
+    try{
+        const salao= await Salao.findById(request.params.id)
+        response.status(200).json(salao)
+    }catch(error){
+        response.status(200).json({
+            message: "Salão não encontrado em nosso sistema"
+        })
+    }
 }
 
 const createSalao = async (request, response) => {
@@ -93,6 +105,7 @@ const replaceSalao = async (request, response) => {
 
 module.exports = {
     showSalao,
+    showSalaoId,
     createSalao,
     replaceSalao,
     deleteSalao

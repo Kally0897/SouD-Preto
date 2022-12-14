@@ -4,11 +4,11 @@ const jwt = require('jsonwebtoken');
 
 
 const SECRET = process.env.SECRET;
-
+ 
 
 const login = (request, response) => {
     try{
-       UserSchema.findOne({email: request.body.email}, (error, user) => {
+       UserSchema.findOne({email: request.body.email}, (error, user) => { 
         if(user){
             console.log(user)
         }if(!user || error){

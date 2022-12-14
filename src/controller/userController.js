@@ -1,5 +1,6 @@
 const UserSchema = require("../models/UserSchema");
 const bcrypt = require('bcrypt');
+const { find } = require("../models/UserSchema");
 
 
 
@@ -44,48 +45,59 @@ const creatUser = async( request, response) => {
 }
 
 const updateUser = async (request, response) => {
-  const user = await UserSchema.findById(request.params.id)
+  const { nome, email, password } = request.body
+  const id = request.params.id
 
-  if(user == null){
-    return response.satus(404).json({
-      message: "Usuário não encontrado"
-    })
-  }
-
-  if(request.params.id != null){
-
-  }
 
   try{
-    const adjustUser = await user.save()
-    return response.status(200).send(adjustUser)
-  }catch(error){
-    response.status(500).json({
-      message: error.message
-    })
-  }
-}
+    const findUser = await UserSchema.findById(id)
 
-const deleteUser = async (request, response) => {
-   const user = await UserSchema.findById(request.params.id)
+    if(!findUser){
+      return response.status(404).json({
+        message: "Usuário não encontrado"
+      })
+    }
 
-   if(user == null){
-    return response.status(404).json({
-      message: "Usuário não encontrado"
-    })
+    findUser.password = (password && bcrypt.hashSync(password, SALT) )|| findUser.password;
+    findUser.nome = nome || findUser.nome
+    findUser.email = email || findUser.email
 
-  }
 
-  try{
-    await user.remove()
-    response.status(200).json({
-      message: "Usuário deletado com sucesso!"
+    const userUpdated = await findUser.save();
+
+    return response.status(200).json({
+      message: `Usuário atualizado: ${userUpdated}`
     })
   }catch(error){
     return response.status(500).json({
       message: error.message
     })
   }
+}
+
+const deleteUser = async (request, response) => {
+const { id } = request.params
+
+try{
+  const findUser = await UserSchema.findById(id)
+
+  if(!findUser){
+  return response.status(404).json({
+    message: "Usuário não encontrado"
+  })
+ }
+
+ await findUser.delete()
+
+ return response.status(200).json({
+  message: "Usuário deletado com sucesso"
+ })
+}catch(error){
+  response.status(500).json({
+    message: error.message
+  })
+}
+
 
 }
 

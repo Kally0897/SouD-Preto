@@ -7,6 +7,7 @@ const showCabelo = async(request, response) => {
     return response.status(200).json(cabelos)
 }
 
+
 const createCabelo = async (request, response) => {
     const fio = new Cabelo({
         _id: new mongoose.Types.ObjectId(),

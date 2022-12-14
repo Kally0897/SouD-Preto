@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const LojaSchema = new mongoose.Schema({
-    id: mongoose.Schema.Types.ObjectId,
+    id: {
+        type: mongoose.Schema.Types.ObjectId,
+        default: mongoose.Types.ObjectId
+    },
     nome: {
         type: String,
         required: true

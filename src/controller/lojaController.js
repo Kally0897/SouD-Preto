@@ -3,12 +3,26 @@ const Salao = require("../models/SalaoSchema")
 const Loja = require("../models/LojaSchema")
 
 
-
-
-
 const showLoja = async (request, response) => {
     const lojas = await Loja.find()
     return response.status(200).json(lojas)
+}
+
+const showLojaNome = async (request, response) => {
+    const { nome } = request.query;
+
+    let query = { };
+
+    if(nome) query.nome = new RegExp(nome, "i")
+
+    try{
+        const loja = await Loja.find(query)
+        response.status(200).json(loja)
+    }catch(error){
+        response.status(500).json({
+            message: "Loja não encontrada em nosso sistema"
+        })
+    }
 }
 
 const showLojaId = async (request, response) => {
@@ -30,7 +44,16 @@ const createLoja = async (request, response) =>{
         instagram: request.body.instagram,
         cabelos: request.body.cabelos,
         telefone: request.body.telefone,
-        bairro: request.body.bairro,  
+        endereco: {
+            rua: request.body.endereco.rua,
+            número: request.body.endereco.número,
+            bairro: request.body.endereco.bairro,
+            cidade: request.body.endereco.cidade,
+            estado: request.body.endereco.estado,
+            cep: request.body.endereco.cep,
+            complemento: request.body.endereco.complemento
+
+        },
         produto: request.body.produto
     })
 
@@ -50,7 +73,7 @@ const createLoja = async (request, response) =>{
     }
 }
 
-    const replaceLoja = async (request, response) => {
+const replaceLoja = async (request, response) => {
         const store = await Loja.findById(request.params.id)
 
         if(store == null){
@@ -65,20 +88,20 @@ const createLoja = async (request, response) =>{
             store.instagram = request.body.instagram,
             store.produtos = request.body.produtos,
             store.telefone = request.body.telefone
+            store.endereço = request.body.endereço
         }
 
         try{
             const adjusteCabelo = await store.save()
-            return response.status(200).send(`Loja atualizada com sucesso:`, adjusteCabelo)
+            return response.status(200).json({adjusteCabelo})
         }catch(error){
             response.status(500).json({
                 message: error.message
             })
         }
+}
 
-    }
-
-    const deleteLoja = async (request, response) => {
+const deleteLoja = async (request, response) => {
         const store = await Loja.findById(request.params.id)
         if(store == null){
             return response.status(404).json({
@@ -96,11 +119,11 @@ const createLoja = async (request, response) =>{
             message: error.message
            })
         }
-
-    }
+}
 
 module.exports = {
     showLoja,
+    showLojaNome,
     showLojaId,
     createLoja,
     replaceLoja,

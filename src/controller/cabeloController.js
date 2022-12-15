@@ -43,12 +43,13 @@ const adjusteCabelo = async (request, response) => {
     }
 
     if(request.body.nome != null){
+        fio.caracteristicas = request.body.caracteristicas
         fio.cuidados_solicitados = request.body.cuidados_solicitados
     }
 
     try{
         const replaceCabelo = await fio.save()
-        response.status(200).send(`Fio atualizado com sucesso, segue para conferência:`, replaceCabelo)
+        response.status(200).json({message: "Fio atualizado com sucesso"})
     }catch(error){
         response.status(500).json({
             message: error.message

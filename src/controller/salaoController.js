@@ -3,16 +3,31 @@ const Salao = require("../models/SalaoSchema")
 const Loja = require("../models/LojaSchema")
 
 
-
-
 const showSalao = async (request, response) => {
     const saloes = await Salao.find()
     return response.status(200).json(saloes)
 }
 
+const showSalaoNome = async (request, response) => {
+const { nome } = request.query;
+
+let query = { };
+
+if(nome) query.nome = new RegExp(nome, "i")
+
+    try{
+        const salao = await Salao.find(request.query.nome)
+        response.status(200).json(salao)
+    }catch(error){
+        response.status(500).json({
+            message: "Salao não encotrado em nosso sistema"
+        })
+    }
+}
+
 const showSalaoId = async (request, response) => {
     try{
-        const salao= await Salao.findById(request.params.id)
+        const salao = await Salao.findById(request.params.id)
         response.status(200).json(salao)
     }catch(error){
         response.status(200).json({
@@ -28,7 +43,16 @@ const createSalao = async (request, response) => {
         cnpj: request.body.cnpj,
         instagram: request.body.instagram,
         telefone: request.body.telefone,
-        bairro: request.body.bairro,
+        endereço: {
+            rua: request.body.endereçoo.rua,
+            número: request.body.endereço.número,
+            bairro: request.body.endereço.bairro,
+            cidade: request.body.endereço.cidade,
+            estado: request.body.endereço.estado,
+            cep: request.body.endereço.cep,
+            complemento: request.body.endereço.complemento
+
+        },
         especialidades: request.body.especialidades
     })
 
@@ -49,7 +73,6 @@ const createSalao = async (request, response) => {
 
 }
 
-
 const replaceSalao = async (request, response) => {
     const saloon = await Salao.findById(request.params.id)
 
@@ -64,14 +87,13 @@ const replaceSalao = async (request, response) => {
         saloon.cnpj = request.body.cnpj,
         saloon.instagram = request.body.instagram,
         saloon.telefone = request.body.telefone,
-        saloon.bairro = request.body.bairro,
+        saloon.endereço= request.body.endereço,
         saloon.especialidades = request.body.especialidades
-
     }
 
     try{
         const adjusteSalao = await saloon.save()
-        return response.satus(200).send(`Salão atualizado com sucesso:`, adjusteSalao)
+        return response.satus(200).json({adjusteSalao})
     }catch(error){
         response.status(500).json({
             message: error.message
@@ -79,7 +101,7 @@ const replaceSalao = async (request, response) => {
     }
 }
 
-    const deleteSalao = async (request, response) => {
+const deleteSalao = async (request, response) => {
         const saloon = await Salao.findById(request.params.id)
         if(saloon == null){
             return response.satus(404).json({
@@ -90,21 +112,19 @@ const replaceSalao = async (request, response) => {
         try{
             await saloon.remove()
             response.satus(200).json({
-                message: "Slão deletado com sucesso!"
+                message: "Salão deletado com sucesso!"
             })
         }catch(error){
             return response.satus(500).json({
                 message: error.message
             })
         }
-    }
-
-
-
+}
 
 
 module.exports = {
     showSalao,
+    showSalaoNome,
     showSalaoId,
     createSalao,
     replaceSalao,

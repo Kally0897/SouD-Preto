@@ -7,10 +7,10 @@ const { checkAuth } = require("../midllewares/auth")
 
 
 router.get("/all", salaoController.showSalao);
-router.get("/all/:id", salaoController.showSalaoId)
-/*Se possível implementar rota para pegar Loja pelo nome*/ 
+router.get("/all", salaoController.showSalaoNome)
+router.get("/all/:id", salaoController.showSalaoId); 
 router.post("/create", checkAuth , salaoController.createSalao);
-router.patch("/update", checkAuth, salaoController.replaceSalao)
-router.delete("/delete", checkAuth, salaoController.deleteSalao)
+router.patch("/update:id", checkAuth, salaoController.replaceSalao)
+router.delete("/delete:id", checkAuth, salaoController.deleteSalao)
 
 module.exports = router;

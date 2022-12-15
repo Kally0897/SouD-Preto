@@ -8,10 +8,10 @@ const { checkAuth } = require("../midllewares/auth")
 
 
 router.get("/all",userController.allUsers);
-/*Se possível implementar rota para pegar usuário pelo nome*/ 
+router.get("all", userController.userByName)
 router.post("/create", userController.creatUser);
 router.post("/login", authController.login);
-router.put("/update", checkAuth, userController.updateUser)
-router.delete("/delete", checkAuth, userController.deleteUser)
+router.put("/update/:id", checkAuth, userController.updateUser)
+router.delete("/delete/:id", checkAuth, userController.deleteUser)
 
 module.exports = router;

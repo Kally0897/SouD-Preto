@@ -1,17 +1,14 @@
 const mongoose = require('mongoose');
 
 const LojaSchema = new mongoose.Schema({
-    id: {
-        type: mongoose.Schema.Types.ObjectId,
-        default: mongoose.Types.ObjectId
-    },
     nome: {
         type: String,
         required: true
     },
     cnpj:{
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     instagram: {
         type: String,
@@ -25,9 +22,36 @@ const LojaSchema = new mongoose.Schema({
          type: String,
          required: false
     },
-    bairro:{
-        type: String,
-        required: true 
+    endereco:{
+        rua:{
+            type: String,
+            rquired: true
+        },
+        número:{
+            type: Number,
+            required: true
+        },
+        bairro: {
+            type: String,
+            required: true
+        },
+        cidade: {
+            type: String,
+            required: true
+        },
+        estado:{
+            type: String,
+            required: true
+        },
+        cep:{
+            type: String,
+            required: true
+        },
+        complemento:{
+            type: String,
+            required: false
+
+        }
     },
     produtos:{
         type: Array,

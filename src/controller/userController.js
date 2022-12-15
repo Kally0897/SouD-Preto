@@ -1,6 +1,7 @@
 const UserSchema = require("../models/UserSchema");
 const bcrypt = require('bcrypt');
-const { find } = require("../models/UserSchema");
+const SALT = 5
+
 
 
 
@@ -12,6 +13,23 @@ const allUsers = async (request, response) => {
       response.status(200).send(users)
   }) 
 };
+
+const userByName  = async (request, response) => {
+  const { nome } = request.query;
+
+let query = { };
+
+if(nome) query.nome = new RegExp(nome, "i")
+
+    try{
+        const user = await UserSchema.find(request.query.nome)
+        response.status(200).json(user)
+    }catch(error){
+        response.status(500).json({
+            message: "Usuárcio não encotrado em nosso sistema"
+        })
+    }
+}
 
 const creatUser = async( request, response) => {
    const hashedPassword = bcrypt.hashSync(request.body.password, 05)
@@ -66,7 +84,7 @@ const updateUser = async (request, response) => {
     const userUpdated = await findUser.save();
 
     return response.status(200).json({
-      message: `Usuário atualizado: ${userUpdated}`
+      message: `Usuário atualizado com sucesso!`
     })
   }catch(error){
     return response.status(500).json({
@@ -104,6 +122,7 @@ try{
 
 module.exports = {
     allUsers,
+    userByName ,
     creatUser,
     updateUser,
     deleteUser

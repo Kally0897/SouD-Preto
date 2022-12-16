@@ -88,7 +88,6 @@ const replaceLoja = async (request, response) => {
             store.instagram = request.body.instagram,
             store.produtos = request.body.produtos,
             store.telefone = request.body.telefone
-            store.endereço = request.body.endereço
         }
 
         try{

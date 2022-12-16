@@ -4,8 +4,9 @@
   "description": "<h1> PROJETO FINAL - REPROGRAMA </h1>",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "test": "jest--watchAll --detectOpenHandles",
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,14 @@
     "moment": "^2.29.4",
     "mongoose": "^6.8.0",
     "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1",
+    "supertest": "^6.3.3"
+  },
+  "jest":{
+    "setupFiles": [
+      "<rootDir>/src/test/jest.setup.js"
+    ]
   }
 }

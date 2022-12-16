@@ -43,16 +43,6 @@ const createSalao = async (request, response) => {
         cnpj: request.body.cnpj,
         instagram: request.body.instagram,
         telefone: request.body.telefone,
-        endereço: {
-            rua: request.body.endereçoo.rua,
-            número: request.body.endereço.número,
-            bairro: request.body.endereço.bairro,
-            cidade: request.body.endereço.cidade,
-            estado: request.body.endereço.estado,
-            cep: request.body.endereço.cep,
-            complemento: request.body.endereço.complemento
-
-        },
         especialidades: request.body.especialidades
     })
 

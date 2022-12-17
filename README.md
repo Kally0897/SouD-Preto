@@ -126,10 +126,11 @@ Desenvolvimento de API em JavaScript que visa ser uma plataforma de apoio e enco
 
 | Método HTTP  | Endpoint               | Descrição                                         |
 | ------------ | ---------------------- | ------------------------------------------------- |
-| POST         | `/reserve/create`      | Criar/cadastrar um estabelecimento                |
-| GET          | `/reserve/all`         | Retorna todos os estabelecimentos                 |
-| PATCH        | `/reserve/update/:id`  | Atualizar/Substituir um estabelecimento           |
-| DELETE       | `/reserve/delete/:id`  | Retorna a remoção de um estabelecimento           |
+| POST         | `/reserve/create`      | Criar/cadastrar uma reserva                       |
+| GET          | `/reserve/all`         | Retorna todos as reservas                         |
+| GET          | `/reserve/+nome`       | Retorna todos as reservas por nome inserido       |
+| PATCH        | `/reserve/update/:id`  | Atualizar/Substituir uma reserva                  |
+| DELETE       | `/reserve/delete/:id`  | Retorna a remoção de uma reserva                  |
 
 <br>
 

@@ -13,7 +13,6 @@
    * [Sobre](#sobre)
    * [Requisitos](#requisitos)
    * [Arquitetura da API](#arquitetura-da-api)
-   * [Documentação da API](#documentação-da-api)
    * [Rotas HTTP](#rotas-http)
        * [Retorna rota default da aplicação](#retorna-rota-default-da-aplicação)
        * [Manipulação das Rotas Cabelos](#manipulação-das-rotas-cabelos)
@@ -61,10 +60,6 @@ Desenvolvimento de API em JavaScript que visa ser uma plataforma de apoio e enco
 
 <h1 align="center"> Arquitetura MVC </h1>
 <h1 align="center"><img src="https://user-images.githubusercontent.com/109546269/208222928-f28cedd6-5dd1-4118-b8d1-215427748d7e.jpg"></h1>
-
-# Documentação da API
-
-* Link da documentação: https://github.com/Kally0897/SouD-Preto/edit/main/README.md
 
 
 # Rotas HTTP

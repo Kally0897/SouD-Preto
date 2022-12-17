@@ -184,9 +184,10 @@ Desenvolvimento de API em JavaScript que visa ser uma plataforma de apoio e enco
 </tr>
 </table>
 
-<h3>  Desenvolvido por:</h3>
+<h3>  Desenvolvido por: </h3>
 
 <div>
+	
 [![Linkedin Badge](https://img.shields.io/badge/-Kalliandra-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/kalliandra-carla-de-lima-b68678127/)](https://www.linkedin.com/in/kalliandra-carla-de-lima-b68678127/)
 
 </div>

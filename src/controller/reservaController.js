@@ -8,6 +8,22 @@ const allReserves = async (request, response) => {
     return response.status(200).json(reservas)
 }
 
+const showReservaNome = async (request, response) => {
+    const { nome } = request.query;
+
+    let query = { };
+
+    if(nome) query.nome = new RegExp(nome, "i")
+
+    try{
+        const reserva = await Reserva.find(query)
+        response.status(200).json(reserva)
+    }catch(error){
+        response.status(500).json({
+            message: "Reserva não encontrada em nosso sistema"
+        })
+    }
+}
 
 const createReserve = async (request, response) => {
     try{
@@ -76,6 +92,7 @@ const trateDate = (data)=>{
 
 module.exports = {
     allReserves,
+    showReservaNome,
     createReserve,
     replaceReserves,
     deleteReserve

@@ -8,6 +8,6 @@ const { checkAuth } = require("../midllewares/auth")
 
 router.get("/all", cabeloController.showCabelo); 
 router.post("/create", cabeloController.createCabelo);
-router.put("/update/:id", checkAuth, cabeloController.adjusteCabelo)
+router.patch("/update/:id", checkAuth, cabeloController.adjusteCabelo)
 
 module.exports = router;

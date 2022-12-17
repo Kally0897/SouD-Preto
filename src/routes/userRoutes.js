@@ -11,7 +11,7 @@ router.get("/all",userController.allUsers);
 router.get("all", userController.userByName)
 router.post("/create", userController.creatUser);
 router.post("/login", authController.login);
-router.put("/update/:id", checkAuth, userController.updateUser)
+router.patch("/update/:id", checkAuth, userController.updateUser)
 router.delete("/delete/:id", checkAuth, userController.deleteUser)
 
 module.exports = router;

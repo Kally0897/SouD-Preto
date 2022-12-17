@@ -14,6 +14,13 @@
    * [Requisitos](#requisitos)
    * [Arquitetura da API](#arquitetura-da-api)
    * [Documentação da API](#documentação-da-api)
+   * [Rotas HTTP](#rotas-http)
+       * [Retorna rota default da aplicação](#retorna-rota-default-da-aplicação)
+       * [Manipulação das Rotas Cabelos](#manipulação-das-rotas-cabelos)
+       * [Manipulação das Rotas Usuários](#manipulação-das-rotas-usuários)
+       * [Manipulação das Rotas Lojas](#manipulação-das-rotas-lojas)
+       * [Manipulação das Rotas Salões](#manipulação-das-rotas-salões)
+       * [Manipulação das Rotas Reserva](#manipulação-das-rotas-reserva)
    * [Ferramentas e Tecnologias](#ferramentas-e-tecnologias)
  
 <!--te-->
@@ -58,6 +65,78 @@ Desenvolvimento de API em JavaScript que visa ser uma plataforma de apoio e enco
 # Documentação da API
 
 * Link da documentação: https://github.com/Kally0897/SouD-Preto/edit/main/README.md
+
+
+# Rotas HTTP
+
+## Retorna rota default da aplicação
+
+| Método HTTP  | Endpoint                     | Descrição                            |
+| ------------ | ---------------------------- | ------------------------------------ |
+| GET          | `http://localhost:8989/`     |  Mensagem de apresentação (Index)    |             |
+
+<br>
+
+## Manipulação das Rotas Cabelos:
+
+| Método HTTP  | Endpoint               | Descrição                                         |
+| ------------ | ---------------------- | ------------------------------------------------- |
+| GET          | `/cabelos/all`         | Retorna todos os cabelos cadastrados              |
+| POST         | `/cabelos/create`      | Criar/cadastrar um tipo de fio novo               |
+| Patch        | `/cabelos/update/:id`  | Atualizar/Substituir um fio já cadastrado         |
+
+
+<br>
+
+## Manipulação das Rotas Usuários:
+
+
+| Método HTTP  | Endpoint               | Descrição                                         |
+| ------------ | ---------------------- | ------------------------------------------------- |
+| POST         | `/users/create`        | Criar/cadastrar um usuário                        |
+| POST         | `/users/login`         | Rota de login de usuário                          |
+| GET          | `/users/all`           | Retorna todos os usuários                         |
+| GET          | `/users/+nome`         | Retorna todos os usuários por nome inserido       |
+| PATCH        | `/users/update/:id`    | Atualizar/Substituir um usuário                   |
+| DELETE       | `/users/delete/:id`    | Retorna a remoção de um usuário                   |
+
+<br>
+
+## Manipulação das Rotas Lojas:
+
+| Método HTTP  | Endpoint               | Descrição                                         |
+| ------------ | ---------------------- | ------------------------------------------------- |
+| POST         | `/lojas/create`        | Criar/cadastrar um estabelecimento                |
+| GET          | `/lojas/all`           | Retorna todos os estabelecimentos                 |
+| GET          | `/lojas/+nome`         | Retorna todos os estabelecimentos por nome        |
+| PATCH        | `/lojas/update/:id`    | Atualizar/Substituir um estabelecimento           |
+| DELETE       | `/lojas/delete/:id`    | Retorna a remoção de um estabelecimento           |
+
+<br>
+
+## Manipulação das Rotas Salões:
+
+
+| Método HTTP  | Endpoint               | Descrição                                         |
+| ------------ | ---------------------- | ------------------------------------------------- |
+| POST         | `/saloes/create`       | Criar/cadastrar um estabelecimento                |
+| GET          | `/saloes/all`          | Retorna todos os estabelecimentos                 |
+| GET          | `/saloes/+nome`        | Retorna todos os estabelecimentos por nome        |
+| PATCH        | `/saloes/update/:id`   | Atualizar/Substituir um estabelecimento           |
+| DELETE       | `/saloes/delete/:id`   | Retorna a remoção de um estabelecimento           |
+
+<br>
+
+## Manipulação das Rotas Reserva:
+
+| Método HTTP  | Endpoint               | Descrição                                         |
+| ------------ | ---------------------- | ------------------------------------------------- |
+| POST         | `/reserve/create`      | Criar/cadastrar um estabelecimento                |
+| GET          | `/reserve/all`         | Retorna todos os estabelecimentos                 |
+| PATCH        | `/reserve/update/:id`  | Atualizar/Substituir um estabelecimento           |
+| DELETE       | `/reserve/delete/:id`  | Retorna a remoção de um estabelecimento           |
+
+<br>
 
 # 🛠Ferramentas e Tecnologias
 

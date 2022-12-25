@@ -13,7 +13,7 @@ const showLojaNome = async (request, response) => {
 
     let query = { };
 
-    if(nome) query.nome = new RegExp(nome, "i")
+    if (nome) query.nome = new RegExp(nome, "i")
 
     try{
         const loja = await Loja.find(query)

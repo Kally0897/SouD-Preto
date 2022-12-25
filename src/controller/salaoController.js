@@ -30,7 +30,7 @@ const { especialidades } = request.query;
 
 let query = { };
 
-if(especialidades) query.especialidades = new RegExp(especialidades, "i")
+if (especialidades) query.especialidades = new RegExp(especialidades, "i")
 
     try{
         const salao = await Salao.find(query)

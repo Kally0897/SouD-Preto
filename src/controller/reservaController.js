@@ -13,7 +13,7 @@ const showReservaNome = async (request, response) => {
 
     let query = { };
 
-    if(nome) query.nome = new RegExp(nome, "i")
+    if (nome) query.nome = new RegExp(nome, "i")
 
     try{
         const reserva = await Reserva.find(query)

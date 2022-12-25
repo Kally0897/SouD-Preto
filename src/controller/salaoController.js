@@ -61,13 +61,13 @@ const createSalao = async (request, response) => {
         instagram: request.body.instagram,
         telefone: request.body.telefone,
         endereco: {
-            rua: rua,
-            numero: numero,
-            bairro: bairro,
-            cidade: cidade,
-            estado: estado,
-            cep: cep,
-            complemento: complemento
+            rua: request.body.endereco.rua,
+            numero: request.body.endereco.numero,
+            bairro: request.body.endereco.bairro,
+            cidade: request.body.endereco.cidade,
+            estado: request.body.endereco.estado,
+            cep: request.body.endereco.cep,
+            complemento: request.body.endereco.complemento
 
         },
         especialidades: request.body.especialidades

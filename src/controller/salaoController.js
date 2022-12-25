@@ -25,6 +25,23 @@ if(nome) query.nome = new RegExp(nome, "i")
     }
 }
 
+const showSalaoEspecialidadesPorNome = async (request, response) => {
+const { especialidades } = request.query;
+
+let query = { };
+
+if(especialidades) query.especialidades = new RegExp(especialidades, "i")
+
+    try{
+        const salao = await Salao.find(request.query.especialidades)
+        response.status(200).json(salao)
+    }catch(error){
+        response.status(500).json({
+            message: "Especialidade não encotrada em nosso sistema"
+        })
+    }
+}
+
 const showSalaoId = async (request, response) => {
     try{
         const salao = await Salao.findById(request.params.id)
@@ -115,6 +132,7 @@ const deleteSalao = async (request, response) => {
 module.exports = {
     showSalao,
     showSalaoNome,
+    showSalaoEspecialidadesPorNome,
     showSalaoId,
     createSalao,
     replaceSalao,

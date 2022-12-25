@@ -16,11 +16,28 @@ const showLojaNome = async (request, response) => {
     if(nome) query.nome = new RegExp(nome, "i")
 
     try{
-        const loja = await Loja.find(query)
+        const loja = await Loja.find(request.query.nome)
         response.status(200).json(loja)
     }catch(error){
         response.status(500).json({
             message: "Loja não encontrada em nosso sistema"
+        })
+    }
+}
+
+const showLojaProdutoPorNome = async (request, response) => {
+    const { produto } = request.query;
+
+    let query = { };
+
+    if(produto) query.produto = new RegExp(produto, "i")
+
+    try{
+        const loja = await Loja.find(request.query.produto)
+        response.status(200).json(loja)
+    }catch(error){
+        response.status(500).json({
+            message: "Produto não encontrado em nosso sistema"
         })
     }
 }
@@ -123,6 +140,7 @@ const deleteLoja = async (request, response) => {
 module.exports = {
     showLoja,
     showLojaNome,
+    showLojaProdutoPorNome,
     showLojaId,
     createLoja,
     replaceLoja,

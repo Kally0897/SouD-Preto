@@ -8,6 +8,7 @@ const { checkAuth } = require("../midllewares/auth")
 
 router.get("/all", lojaController.showLoja);
 router.get("/all", lojaController.showLojaNome);
+router.get("/produto", lojaController.showLojaProdutoPorNome);
 router.get("/all/:id", lojaController.showLojaId);
 router.post("/create", checkAuth , lojaController.createLoja);
 router.patch("/update/:id", checkAuth, lojaController.replaceLoja)

@@ -19,12 +19,12 @@ const SalaoSchema = new mongoose.Schema({
          type: String,
          required: true
     },
-    endereço:{
+    endereco:{
         rua:{
             type: String,
             rquired: true
         },
-        número:{
+        numero:{
             type: Number,
             required: true
         },

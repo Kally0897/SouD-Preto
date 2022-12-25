@@ -33,7 +33,7 @@ let query = { };
 if(especialidades) query.especialidades = new RegExp(especialidades, "i")
 
     try{
-        const salao = await Salao.find(request.query.especialidades)
+        const salao = await Salao.find(query)
         response.status(200).json(salao)
     }catch(error){
         response.status(500).json({
@@ -104,7 +104,6 @@ const replaceSalao = async (request, response) => {
         saloon.cnpj = request.body.cnpj,
         saloon.instagram = request.body.instagram,
         saloon.telefone = request.body.telefone,
-        saloon.endereço= request.body.endereço,
         saloon.especialidades = request.body.especialidades
     }
 

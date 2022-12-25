@@ -16,7 +16,7 @@ let query = { };
 if(nome) query.nome = new RegExp(nome, "i")
 
     try{
-        const salao = await Salao.find(request.query.nome)
+        const salao = await Salao.find(query)
         response.status(200).json(salao)
     }catch(error){
         response.status(500).json({

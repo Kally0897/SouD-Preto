@@ -16,7 +16,7 @@ const showLojaNome = async (request, response) => {
     if (nome) query.nome = new RegExp(nome, "i")
 
     try{
-        const loja = await Loja.find(query)
+        const loja = await Loja.find({nome})
         response.status(200).json(loja)
     }catch(error){
         response.status(500).json({

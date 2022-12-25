@@ -22,7 +22,7 @@ let query = { };
 if (nome) query.nome = new RegExp(nome, "i")
 
     try{
-        const user = await UserSchema.find(query)
+        const user = await UserSchema.find({nome})
         response.status(200).json(user)
     }catch(error){
         response.status(500).json({

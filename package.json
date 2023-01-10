@@ -4,7 +4,7 @@
   "description": "<h1> PROJETO FINAL - REPROGRAMA </h1>",
   "main": "server.js",
   "scripts": {
-    "test": "jest--watchAll --detectOpenHandles",
+    "test": "jest --forceExit",
     "start": "nodemon server.js",
     "dev": "nodemon server.js"
   },

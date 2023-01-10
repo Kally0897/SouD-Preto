@@ -61,7 +61,7 @@ test("POST /cabelos/create", (done) => {
     })
 })
 
-test("PUT /cabelos/update/:id", (done) => {
+test("PATCH /cabelos/update/:id", (done) => {
     const cabeloBody = {
         caracteristicas: "textura altamente densa e diâmetro extremamente fechado",
         cuidados_solicitados: ["lavagem a cada dois dias", "humidificação constante", "manter sempre hidratado"] 

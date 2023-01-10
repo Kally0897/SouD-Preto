@@ -11,7 +11,7 @@ router.get("/all", salaoController.showSalaoNome);
 router.get("/especialidades", salaoController.showSalaoEspecialidadesPorNome);
 router.get("/all/:id", salaoController.showSalaoId); 
 router.post("/create", checkAuth , salaoController.createSalao);
-router.patch("/update:id", checkAuth, salaoController.replaceSalao)
-router.delete("/delete:id", checkAuth, salaoController.deleteSalao)
+router.patch("/update/:id", checkAuth, salaoController.replaceSalao)
+router.delete("/delete/:id", checkAuth, salaoController.deleteSalao)
 
 module.exports = router;

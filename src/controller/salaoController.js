@@ -73,7 +73,7 @@ const createSalao = async (request, response) => {
         especialidades: request.body.especialidades
     })
 
-    const existingCnpj = await (Loja.findOne({ cnpj: request.body.cnpj}) || Salao.findOne({ cnpj: request.body.cnpj}))
+    const existingCnpj = await ( Salao.findOne({ cnpj: request.body.cnpj}) || Loja.findOne({ cnpj: request.body.cnpj}) )
 
     if(existingCnpj){
         return response.status(409).json({ error: "Cnpj já cadastrado na nossa base de dados"})

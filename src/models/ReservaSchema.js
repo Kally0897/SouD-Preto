@@ -8,6 +8,7 @@ const reserve = async (request, response) => {
         
         const reserver = new ReservaSchema({
             salao: request.body.salao,
+            corte_solidario: true,
             data_reserva: tratarData(req.body.data_reserva)
         })
 
